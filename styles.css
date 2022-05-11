@@ -2,7 +2,8 @@
 
 * {
    margin: 0;
-   padding: 0; 
+   padding: 0;
+   box-sizing: border-box; 
 }
 
 button {
@@ -47,6 +48,36 @@ button {
     } 100% {
         opacity: 1;
         transform: translateX(0px);
+    }
+}
+
+@keyframes fade-in-from-right {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    } 100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes image-scale {
+    0% {
+        height: 100%;
+        width: 100%;
+    }
+    100% {
+        height: 75%;
+        width: 78%;
     }
 }
 
@@ -186,6 +217,81 @@ button {
 .panel {
     background-color: #2B363C;
     width: 350px;
+    padding: 15px 31px;
+}
+
+.panel__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #4B5155;
+    padding-bottom: 12px;
+}
+
+.first-heading {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.panel__collapse-icon {
+    color: #6B7276;
+    cursor: pointer;
+}
+
+.panel__images {
+    padding: 25px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.panel__img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 7px;
+    transition: all 0.2s;
+    cursor: pointer;
+    animation: fade-in 1s;
+}
+
+.panel__img:nth-child(2) {
+    animation: fade-in 1s 0.1s backwards;
+}
+.panel__img:nth-child(3) {
+    animation: fade-in 1s 0.2s backwards;
+}
+.panel__img:nth-child(4) {
+    animation: fade-in 1s 0.3s backwards;
+}
+.panel__img:nth-child(5) {
+    animation: fade-in 1s 0.4s backwards;
+}
+
+.panel__img:hover {
+    transform: scale(1.05);
+}
+
+.panel__btn {
+    width: 140px;
+    height: 140px;
+    border-radius: 7px;
+    background-color: #333e44;
+    cursor: pointer;
+    animation: fade-in 1s 0.5s backwards;
+
+}
+
+.panel__btn:hover, 
+.panel__btn:focus {
+    background-color: #404c52;
+    transition: all 0.2s;
+}
+
+.panel__upload-icon {
+    font-size: 25px;
+    color: #21292d;
+
 }
 
 /*---------------*/
@@ -193,4 +299,152 @@ button {
 .main {
     background-color: #EDF1F3;
     flex: 1;
+}
+
+.info-bar {
+    height: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #D6DDe1;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.breadcrumbs {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+}
+.breadcrumbs__link {
+    color: #A6ADB1;
+    text-decoration: none;
+}
+.breadcrumbs__icon {
+    color: #A6ADB1;
+    margin: 0 13px;
+}
+.breadcrumbs__name {
+    color: #2E3335;
+    font-weight: 500;
+}
+
+.button {
+    background-color: #375BB6;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 500px;
+    transition: all 0.4s;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #26438D;
+}
+
+.artboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 50px - 55px);
+    margin-top: -25px;
+    column-gap: 20px;
+}
+
+.canvas {
+    height: 57.5vh;
+    width: 48.6vw;
+    position: relative;
+    border: 1px solid #fff;
+    border-radius: 3px;
+}
+
+.canvas__bg-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.15;
+}
+
+.canvas__fg-img {
+    height: 75%;
+    width: 78%;
+    object-fit: cover;
+    border-radius: 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #fff;
+    cursor: grab;
+    animation: image-scale 1s 0.2s backwards;
+}
+
+.canvas__circle {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    animation: fade-in 1s 1s backwards;
+}
+.canvas__circle:nth-of-type(1) {
+    top: 11.5%;
+    left: 10.4%;
+    cursor: nw-resize;
+}
+.canvas__circle:nth-of-type(2) {
+    top: 11.5%;
+    right: 10.4%;
+    cursor: ne-resize;
+}
+.canvas__circle:nth-of-type(3) {
+    bottom: 11.5%;
+    left: 10.4%;
+    cursor: sw-resize;
+}
+.canvas__circle:nth-of-type(4) {
+    bottom: 11.5%;
+    right: 10.4%;
+    cursor: se-resize;
+}
+
+.tools {
+    height: 57.5vh;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    animation: fade-in-from-right 0.5s;
+}
+
+.tool {
+    background-color: #E1E6E9;
+    height: 44px;
+    width: 44px;
+    border-radius: 8px;
+    color: #404446;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+.tool:hover,
+.tool:focus {
+    background-color: #2B363B;
+    color: #fff;
+}
+
+.tool--active {
+    background-color: #2B363B;
+    color: #fff;
+}
+
+.tool:last-child {
+    margin-top: auto;
+}
+
+.tool__icon {
+
 }
